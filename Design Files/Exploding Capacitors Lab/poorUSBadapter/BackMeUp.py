@@ -15,7 +15,7 @@ if _platform == "linux" or _platform == "linux2":
     slash = "/"
 elif _platform == "win32":
    # Windows
-    slash = "\"
+    slash = "\\"
     
 ## Put brief description about what have been done in
 ## this revision in backupInfo.txt and/or update TODO
@@ -45,16 +45,13 @@ if backupInfo:
         for filename in files:
             zf.write(os.path.join(dirname, filename))
     with open(backupInfoFile, "a") as f:
-        f.write("
-
-Timestamp: "+bckTimestamp)
+        f.write("Timestamp: "+bckTimestamp)
     zf.write(backupInfoFile)
     zf.close()
     open(backupInfoFile, 'w').close()
     print "Backup is done. Zip file:", zfName
 else:
-    print "Backup info is empty!     
-Please add description to backupInfo.txt and re-run this script again!"
+    print "Backup info is empty! Please add description to backupInfo.txt and re-run this script again!"
 
 print "Press any key to continue..."
 raw_input()
